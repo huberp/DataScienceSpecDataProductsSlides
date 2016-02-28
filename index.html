@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visual Software Analytics</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Visual Software Analytics">
+  <meta name="author" content="Peter Huber">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Visual Software Analytics</h1>
+    <h2>Using R to Explore Software Metrics of JUnit(tm)</h2>
+    <p>Peter Huber<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Software is built from Source Code, like Classes which are organized in Packages or Modules. 
+To assess the Quality of Software, certain Metrics [1] are computed to be able to do quantitative Analysis.
+Metrics are computed on different Levels describing an aspect of a thing, for instance the number of lines of code of a method, or interdependencies between things, like the number of packages a packages depends on (inlude-relations). These are basic metrics which can be computed from source code alone.
+&quot;Quality of Software&quot; is finaly a abstract term which is used to describe higher level aspects so called &quot;ilities&quot; like
+Maintainability, Testability, Traceability, Modularity, etc which see the Software as a whole. Based on the basic metrics you can try to compute certain index-values for these ilities, for instance a Maintainability-Index [2].</p>
+
+<p>This Project provides means to do some exploratory Analysis to a Java Software Library called &quot;JUint&quot; [3] in Terms of the Basic Metrics for the Java Classes of JUnit. This is usually a first step in the assessment of Source Code to get a first impression of potential hot spots / code smells. It gives direction to further investigation steps.</p>
+
+<p>Actually this is a feasibility study to show that the processing pipeline as described on the next slide works and could be used for Visual Software Analytics.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Methods</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Data Collection</h1>
+
+<p>Data was collected in three steps</p>
+
+<ol>
+<li><p>Apply inFamix[4] Parser to the source Code of JUnit. Result is a File in MSE-Format [5]</p></li>
+<li><p>Parse MSE-File and build two R data.frames for Java Class and Java Package Data. Code in my github Repository &quot;SoftwareAnalyticsWithR&quot; was used [6] that I created during a openHPI MOOC class [7]</p></li>
+<li><p>Provide these data.frames as input files to the shiny app[8]</p></li>
+</ol>
+
+<h1>Exploratory Analysis</h1>
+
+<p>The shiny app allows the user to select a Metric and displays a treemap of the Metric grouped per Package, i.e. all classes that belong to a Package contribute. Along the treemap there&#39;s a histogram showing the distribution of metric values over all Classes.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Results</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The shiny App shows the feasibility of the Analysis Pipeline. It can be used to do some exploratory Analysis on JUnit Source Code Metrics.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Conclusion</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Software Metrics are an unvaluable tool for building qualitative Software. The introduced data collection and processing pipeline has shown it&#39;s feasibility. Next steps could be to allow users to upload their MSE-Files that they collected on theri software to allow for Exploratory Analysis of any Software possible.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Reference</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>[1] Software Metrics: 
+<a href="https://en.wikipedia.org/wiki/Software_metric">https://en.wikipedia.org/wiki/Software_metric</a></p>
+
+<p>[2] Maintainablity Index: 
+<a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx">http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx</a></p>
+
+<p>[3] JUnit Source Code: 
+<a href="http://junit.org/">http://junit.org/</a></p>
+
+<p>[4] InFamix Java Parser Download: 
+<a href="https://www.intooitus.com/node/85/download">https://www.intooitus.com/node/85/download</a></p>
+
+<p>[5] MSE File Format - Find some Info about MSE here: 
+<a href="http://www.themoosebook.org/book/table-of-contents">http://www.themoosebook.org/book/table-of-contents</a></p>
+
+<p>[6] Software analytics With R - My Preliminary work created taking part in [7]
+<a href="https://github.com/huberp/SoftwareAnalyticsWithR">https://github.com/huberp/SoftwareAnalyticsWithR</a></p>
+
+<p>[7] openHPI MOOC on Visual Software Analytics: 
+<a href="https://open.hpi.de/courses/softwareanalytics2015">https://open.hpi.de/courses/softwareanalytics2015</a></p>
+
+<p>[8] Shiny App: 
+<a href="https://huberp.shinyapps.io/VisualSoftwareAnalytics/">https://huberp.shinyapps.io/VisualSoftwareAnalytics/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Methods'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Results'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Conclusion'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Reference'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
